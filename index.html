@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Shop Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script src="js/lib/jquery-2.1.4.min.js"></script>
+        <script src="js/lib/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Shop Admin</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="#">Customers</a>
+                        </li>
+                        <li>
+                            <a href="#">Products</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="page-header">
+                <h1><span class="glyphicon glyphicon-user"></span> Customers</h1>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="first_name" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="last_name" placeholder="Last Name">
+                        </div>
+                        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Add New Customer</button>
+                    </form>
+                </div>
+            </div>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Shopping Cart</th>
+                        <th>Cheque</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Nazar</td>
+                        <td>Ivato</td>
+                        <td><a href=""><span class="glyphicon glyphicon-shopping-cart"></span> 12 products</a></td>
+                        <td>120.00 $</td>
+                        <th>
+                            <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
+                            <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash"></span></button>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <input type="text" class="form-control input-sm" value="Jack">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" value="Sparrow">
+                        </td>
+                        <td><a href=""><span class="glyphicon glyphicon-shopping-cart"></span> 0 products</a></td>
+                        <td>0.00 $</td>
+                        <th>
+                            <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-ok"></span></button>
+                            <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span></button>
+                        </th>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </body>
+</html>
