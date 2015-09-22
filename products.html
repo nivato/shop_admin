@@ -12,17 +12,22 @@
             <div class="form-group">
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="product_category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Category: Home <span class="caret"></span>
+                        <span class="text-muted">Category:</span> <span class="glyphicon glyphicon-home"></span> Home
+                        <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="product_category">
-                        <li><a href="#">Baby</a></li>
-                        <li><a href="#">Electronics</a></li>
-                        <li><a href="#">Alcohol</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-baby-formula"></span> Baby</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-phone"></span> Electronics</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-glass"></span> Alcohol</a></li>
                     </ul>
                 </div>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="product_prics" placeholder="Price">
+                <div class="input-group">
+                    <input type="number" class="form-control" id="product_price" placeholder="Price">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
+                </div>
             </div>
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-th-large"></span> Add New Product</button>
         </form>
@@ -43,7 +48,7 @@
         <tr>
             <td>1</td>
             <td>iPhone 6</td>
-            <td>Electronics</td>
+            <td><span class="glyphicon glyphicon-phone"></span> Electronics</td>
             <td>620.00 $</td>
             <th>
                 <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -54,12 +59,24 @@
         <tr>
             <td>2</td>
             <td>
-                <input type="text" class="form-control input-sm" value="Jack">
+                <input type="text" class="form-control input-sm" value="Jack Daniel's">
             </td>
             <td>
-                <input type="text" class="form-control input-sm" value="Sparrow">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="product_category_2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-glass"></span> Alcohol <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="product_category_2">
+                        <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-baby-formula"></span> Baby</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-phone"></span> Electronics</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-glass"></span> Alcohol</a></li>
+                    </ul>
+                </div>
             </td>
-            <td>0.00 $</td>
+            <td>
+                <input type="number" class="form-control input-sm" value="100"></span>
+            </td>
             <th>
                 <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-ok"></span></button>
                 <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span></button>

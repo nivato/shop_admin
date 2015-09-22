@@ -6,11 +6,11 @@
         $routeProvider
             .when('/', {templateUrl: '/customers.html'})
             .when('/customers', {templateUrl: '/customers.html'})
-            .when('/products', {templateUrl: '/products.html'});
+            .when('/products', {templateUrl: '/products.html'})
+            .when('/cart/:id', {templateUrl: '/shopping_cart.html'});
     }]);
 
     app.controller('ApplicationController', ['$location', function($location){
-        this.hello = 'Hi, I am Angular.js';
         this.currentMenu = 'customers';
 
         this.changePath = function(path){
