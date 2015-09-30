@@ -5,12 +5,12 @@
 <div class="panel panel-default">
     <div class="panel-body">
 
-        <form class="form-inline">
+        <form class="form-inline" ng-submit="customers.add()">
             <div class="form-group">
-                <input type="text" class="form-control" id="first_name" placeholder="First Name">
+                <input type="text" ng-model="customers.newCustomer.first_name" class="form-control" id="first_name" placeholder="First Name">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="last_name" placeholder="Last Name">
+                <input type="text" ng-model="customers.newCustomer.last_name" class="form-control" id="last_name" placeholder="Last Name">
             </div>
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Add New Customer</button>
         </form>
@@ -29,33 +29,33 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Nazar</td>
-            <td>Ivato</td>
-            <td><a href="" ng-click="app.changePath('/cart/1')"><span class="glyphicon glyphicon-shopping-cart"></span> 2 products</a></td>
+        <tr ng-repeat="customer in customers.added track by customer.id">
+            <td>{{customer.id}}</td>
+            <td>
+                <span ng-hide="customer.editable">{{customer.first_name}}</span>
+                <input type="text" ng-model="customer.first_name" ng-show="customer.editable" class="form-control input-sm">
+            </td>
+            <td>
+                <span ng-hide="customer.editable">{{customer.last_name}}</span>
+                <input type="text" ng-model="customer.last_name" ng-show="customer.editable" class="form-control input-sm">
+            </td>
+            <td><a href="" ng-click="app.changePath('/cart/' + customer.id)"><span class="glyphicon glyphicon-shopping-cart"></span> 2 products</a></td>
             <td>820.00 $</td>
-            <th>
-                <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
-                <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash"></span></button>
-            </th>
-        </tr>
-
-        <tr>
-            <td>2</td>
             <td>
-                <input type="text" class="form-control input-sm" value="Jack">
-            </td>
-            <td>
-                <input type="text" class="form-control input-sm" value="Sparrow">
-            </td>
-            <td><a href="" ng-click="app.changePath('/cart/2')"><span class="glyphicon glyphicon-shopping-cart"></span> 0 products</a></td>
-            <td>0.00 $</td>
-            <th>
-                <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-ok"></span></button>
-                <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span></button>
-            </th>
-        </tr>
+                <button ng-click="customers.edit(customer)" ng-hide="customer.editable" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button ng-click="customers.remove(customer.id)" ng-hide="customer.editable" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
 
+                <button ng-click="customers.saveEdit(customer)" ng-show="customer.editable" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
+                <button ng-click="customers.cancelEdit(customer)" ng-show="customer.editable" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </td>
+        </tr>
     </tbody>
 </table>

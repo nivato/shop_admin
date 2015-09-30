@@ -79,7 +79,7 @@
                 <span ng-hide="product.editable">{{product.price}} $</span>
                 <input type="number" ng-model="product.price" ng-show="product.editable" class="form-control input-sm" />
             </td>
-            <th>
+            <td>
                 <button ng-click="products.edit(product)" ng-hide="product.editable" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </button>
@@ -87,13 +87,13 @@
                     <span class="glyphicon glyphicon-trash"></span>
                 </button>
 
-                <button ng-click="product.editable = !product.editable" ng-show="product.editable" class="btn btn-default btn-sm">
+                <button ng-click="products.saveEdit(product)" ng-show="product.editable" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-ok"></span>
                 </button>
                 <button ng-click="products.cancelEdit(product)" ng-show="product.editable" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-remove"></span>
                 </button>
-            </th>
+            </td>
         </tr>
 
     </tbody>
