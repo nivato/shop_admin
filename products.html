@@ -13,12 +13,12 @@
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="product_category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="text-muted">Category:</span>
-                        <span class="glyphicon glyphicon-{{products.category(products.newProduct.category).icon}}"></span>
-                        {{products.category(products.newProduct.category).name}}
+                        <span class="glyphicon glyphicon-{{products.categories.byId(products.newProduct.category).icon}}"></span>
+                        {{products.categories.byId(products.newProduct.category).name}}
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="product_category">
-                        <li ng-repeat="category in products.categories track by category.id">
+                        <li ng-repeat="category in products.categories.all track by category.id">
                             <a href="" ng-click="products.setCategory(products.newProduct, category)">
                                 <span class="glyphicon glyphicon-{{category.icon}}"></span> {{category.name}}
                             </a>
@@ -56,18 +56,18 @@
             </td>
             <td>
                 <span ng-hide="product.editable">
-                    <span class="glyphicon glyphicon-{{products.category(product.category).icon}}"></span>
-                    {{products.category(product.category).name}}
+                    <span class="glyphicon glyphicon-{{products.categories.byId(product.category).icon}}"></span>
+                    {{products.categories.byId(product.category).name}}
                 </span>
 
                 <div class="dropdown" ng-show="product.editable">
                     <button class="btn btn-default dropdown-toggle" type="button" id="product_{{product.id}}_category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="glyphicon glyphicon-{{products.category(product.category).icon}}"></span>
-                        {{products.category(product.category).name}}
+                        <span class="glyphicon glyphicon-{{products.categories.byId(product.category).icon}}"></span>
+                        {{products.categories.byId(product.category).name}}
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="product_{{product.id}}_category">
-                        <li ng-repeat="category in products.categories track by category.id">
+                        <li ng-repeat="category in products.categories.all track by category.id">
                             <a href="" ng-click="products.setCategory(product, category)">
                                 <span class="glyphicon glyphicon-{{category.icon}}"></span> {{category.name}}
                             </a>
@@ -83,7 +83,7 @@
                 <button ng-click="products.edit(product)" ng-hide="product.editable" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </button>
-                <button ng-click="products.remove(product.id)" ng-hide="product.editable" class="btn btn-default btn-sm">
+                <button ng-click="products.remove(product)" ng-hide="product.editable" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-trash"></span>
                 </button>
 

@@ -10,8 +10,8 @@
                         <span class="text-muted">Product:</span>
                         {{cart.product(cart.newPurchase.product).name}}
                         <small class="text-muted">
-                            <span class="glyphicon glyphicon-{{cart.category(cart.product(cart.newPurchase.product).category).icon}}"></span>
-                            {{cart.category(cart.product(cart.newPurchase.product).category).name}}
+                            <span class="glyphicon glyphicon-{{cart.categories.byId(cart.product(cart.newPurchase.product).category).icon}}"></span>
+                            {{cart.categories.byId(cart.product(cart.newPurchase.product).category).name}}
                         </small>
                         <span class="caret"></span>
                     </button>
@@ -20,8 +20,8 @@
                             <a href="" ng-click="cart.setProduct(cart.newPurchase, product)">
                                 {{product.name}}
                                 <small class="text-muted">
-                                    <span class="glyphicon glyphicon-{{cart.category(product.category).icon}}"></span>
-                                    {{cart.category(product.category).name}}
+                                    <span class="glyphicon glyphicon-{{cart.categories.byId(product.category).icon}}"></span>
+                                    {{cart.categories.byId(product.category).name}}
                                 </small>
                             </a>
                         </li>
@@ -55,8 +55,8 @@
             <td>
                 {{cart.product(purchase.product).name}}
                 <small class="text-muted">
-                    <span class="glyphicon glyphicon-{{cart.category(cart.product(purchase.product).category).icon}}"></span>
-                    {{cart.category(cart.product(purchase.product).category).name}}
+                    <span class="glyphicon glyphicon-{{cart.categories.byId(cart.product(purchase.product).category).icon}}"></span>
+                    {{cart.categories.byId(cart.product(purchase.product).category).name}}
                 </small>
             </td>
             <td>{{cart.product(purchase.product).price}} $</td>

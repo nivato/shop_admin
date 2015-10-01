@@ -39,13 +39,13 @@
                 <span ng-hide="customer.editable">{{customer.last_name}}</span>
                 <input type="text" ng-model="customer.last_name" ng-show="customer.editable" class="form-control input-sm">
             </td>
-            <td><a href="" ng-click="app.changePath('/cart/' + customer.id)"><span class="glyphicon glyphicon-shopping-cart"></span> 2 products</a></td>
+            <td><a href="" ng-click="app.changePath('/cart/' + customer.id)"><span class="glyphicon glyphicon-shopping-cart"></span> {{customer.cart.length}} products</a></td>
             <td>820.00 $</td>
             <td>
                 <button ng-click="customers.edit(customer)" ng-hide="customer.editable" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </button>
-                <button ng-click="customers.remove(customer.id)" ng-hide="customer.editable" class="btn btn-default btn-sm">
+                <button ng-click="customers.remove(customer)" ng-hide="customer.editable" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-trash"></span>
                 </button>
 
