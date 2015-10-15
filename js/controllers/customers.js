@@ -3,6 +3,7 @@
 
     app.controller('CustomersController', ['$customers', function($customers){
         this.newCustomer = {first_name: undefined, last_name: undefined};
+        this.service = $customers;
         this.added = $customers.all;
         this.currentlyEditable = undefined;
         this.editableBackup = {};

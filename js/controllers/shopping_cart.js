@@ -1,33 +1,14 @@
 (function(){
     var app = angular.module('ShopAdmin');
 
-    app.controller('ShoppingCartController', ['$routeParams', '$categories', '$customers', function($routeParams, $categories, $customers){
+    app.controller('ShoppingCartController', ['$routeParams', '$categories', '$customers', '$products', function($routeParams, $categories, $customers, $products){
         this.id = $routeParams.customer_id;
         this.customer = $customers.byId($routeParams.customer_id);
         this.categories = $categories;
-        this.products = [
-            {id: 1, name: 'Nikon D500', category: 5, price: 1000},
-            {id: 2, name: 'iPhone 6', category: 7, price: 820},
-            {id: 3, name: 'Jack Daniels', category: 1, price: 134},
-            {id: 4, name: 'Snickers', category: 9, price: 0.7}
-        ];
-        this.newPurchase = {product: 1, amount: undefined};
-        // this.customer.cart = [
-            // {product: 1, amount: 3},
-            // {product: 2, amount: 5},
-            // {product: 3, amount: 2},
-            // {product: 4, amount: 1}
-        // ];
+        this.products = $products;
+        this.newPurchase = {product: this.products.all[0].id, amount: undefined};
         this.currentlyEditableIndex = undefined;
         this.editableBackup = {};
-
-        this.product = function(id){
-            for (var i=0; i<this.products.length; i++){
-                if (this.products[i].id === id){
-                    return this.products[i];
-                }
-            }
-        };
 
         this.setProduct = function(purchase, product){
             purchase.product = product.id;
@@ -42,7 +23,7 @@
         };
 
         this.clearNewPurchase = function(){
-            this.newPurchase = {product: 1, amount: undefined};
+            this.newPurchase = {product: this.products.all[0].id, amount: undefined};
         };
 
         this.edit = function(index){
@@ -78,18 +59,11 @@
         };
 
         this.total = function(purchase){
-            var product = this.product(purchase.product);
-            return product.price * purchase.amount;
+            return $customers.totalOfPurchase(purchase);
         };
 
         this.altogether = function(){
-            var sum = 0,
-            purchase;
-            for (var i=0; i<this.customer.cart.length; i++){
-                purchase = this.customer.cart[i];
-                sum += this.total(purchase);
-            }
-            return sum;
+            return $customers.customerCheque(this.customer.id);
         };
 
     }]);

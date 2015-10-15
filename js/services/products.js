@@ -1,7 +1,7 @@
 (function(){
     var app = angular.module('ShopAdmin');
 
-    app.factory('$products', [function(){
+    app.factory('$products', ['$categories', function($categories){
         function Products(){
             this.all = [
                 {id: 1, name: 'Nikon D500', category: 5, price: 1000},
@@ -38,6 +38,10 @@
                     break;
                 }
             }
+        };
+
+        def.categoryOf = function(productId){
+            return $categories.byId(this.byId(productId).category);
         };
 
         return new Products();

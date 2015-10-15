@@ -1,7 +1,7 @@
 (function(){
     var app = angular.module('ShopAdmin');
 
-    app.factory('$customers', [function(){
+    app.factory('$customers', ['$products', function($products){
         function Customers(){
             this.all = [
                 {id: 1, first_name: 'Nazar', last_name: 'Ivato', cart: []},
@@ -38,6 +38,22 @@
                     break;
                 }
             }
+        };
+
+        def.totalOfPurchase = function(purchase){
+            var product = $products.byId(purchase.product);
+            return product.price * purchase.amount;
+        };
+
+        def.customerCheque = function(customerId){
+            var sum = 0,
+            customer = this.byId(customerId),
+            purchase;
+            for (var i=0; i<customer.cart.length; i++){
+                purchase = customer.cart[i];
+                sum += this.totalOfPurchase(purchase);
+            }
+            return sum;
         };
 
         return new Customers();

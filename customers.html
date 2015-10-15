@@ -40,7 +40,7 @@
                 <input type="text" ng-model="customer.last_name" ng-show="customer.editable" class="form-control input-sm">
             </td>
             <td><a href="" ng-click="app.changePath('/cart/' + customer.id)"><span class="glyphicon glyphicon-shopping-cart"></span> {{customer.cart.length}} products</a></td>
-            <td>820.00 $</td>
+            <td>{{customers.service.customerCheque(customer.id)}} $</td>
             <td>
                 <button ng-click="customers.edit(customer)" ng-hide="customer.editable" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-pencil"></span>

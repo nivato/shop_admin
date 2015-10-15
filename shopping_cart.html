@@ -8,20 +8,20 @@
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="product" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="text-muted">Product:</span>
-                        {{cart.product(cart.newPurchase.product).name}}
+                        {{cart.products.byId(cart.newPurchase.product).name}}
                         <small class="text-muted">
-                            <span class="glyphicon glyphicon-{{cart.categories.byId(cart.product(cart.newPurchase.product).category).icon}}"></span>
-                            {{cart.categories.byId(cart.product(cart.newPurchase.product).category).name}}
+                            <span class="glyphicon glyphicon-{{cart.products.categoryOf(cart.newPurchase.product).icon}}"></span>
+                            {{cart.products.categoryOf(cart.newPurchase.product).name}}
                         </small>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="product">
-                        <li ng-repeat="product in cart.products track by product.id">
+                        <li ng-repeat="product in cart.products.all track by product.id">
                             <a href="" ng-click="cart.setProduct(cart.newPurchase, product)">
                                 {{product.name}}
                                 <small class="text-muted">
-                                    <span class="glyphicon glyphicon-{{cart.categories.byId(product.category).icon}}"></span>
-                                    {{cart.categories.byId(product.category).name}}
+                                    <span class="glyphicon glyphicon-{{cart.products.categoryOf(product.id).icon}}"></span>
+                                    {{cart.products.categoryOf(product.id).name}}
                                 </small>
                             </a>
                         </li>
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <strong>Price:</strong> {{cart.product(cart.newPurchase.product).price}} $</span>
+                <strong>Price:</strong> {{cart.products.byId(cart.newPurchase.product).price}} $</span>
             </div>
             <div class="form-group">
                 <input type="number" ng-model="cart.newPurchase.amount" class="form-control" id="amount" placeholder="Amount">
@@ -53,13 +53,13 @@
         <tr ng-repeat="purchase in cart.customer.cart track by $index">
             <td>{{$index + 1}}</td>
             <td>
-                {{cart.product(purchase.product).name}}
+                {{cart.products.byId(purchase.product).name}}
                 <small class="text-muted">
-                    <span class="glyphicon glyphicon-{{cart.categories.byId(cart.product(purchase.product).category).icon}}"></span>
-                    {{cart.categories.byId(cart.product(purchase.product).category).name}}
+                    <span class="glyphicon glyphicon-{{cart.products.categoryOf(purchase.product).icon}}"></span>
+                    {{cart.products.categoryOf(purchase.product).name}}
                 </small>
             </td>
-            <td>{{cart.product(purchase.product).price}} $</td>
+            <td>{{cart.products.byId(purchase.product).price}} $</td>
             <td>
                 <span ng-hide="purchase.editable">{{purchase.amount}}</span>
                 <input type="number" ng-model="purchase.amount" ng-show="purchase.editable" class="form-control input-sm" />
