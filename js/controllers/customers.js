@@ -1,7 +1,8 @@
 (function(){
     var app = angular.module('ShopAdmin');
 
-    app.controller('CustomersController', ['$customers', function($customers){
+    app.controller('CustomersController', ['$scope', '$customers', function($scope, $customers){
+        var controller = this;
         this.newCustomer = {first_name: undefined, last_name: undefined};
         this.service = $customers;
         this.added = $customers.all;
@@ -47,6 +48,10 @@
         this.remove = function(customer){
             $customers.remove(customer);
         };
+
+        $scope.$on('$destroy', function(){
+            controller.cancelEdit(controller.currentlyEditable);
+        });
 
     }]);
 

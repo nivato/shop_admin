@@ -4,15 +4,27 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-
-        <form class="form-inline" ng-submit="customers.add()">
+        <form class="form-inline" name="add_customer_form" ng-submit="add_customer_form.$valid && customers.add()" novalidate>
             <div class="form-group">
-                <input type="text" ng-model="customers.newCustomer.first_name" class="form-control" id="first_name" placeholder="First Name">
+                <input type="text" ng-model="customers.newCustomer.first_name" ng-class="{'alert-warning': add_customer_form.first_name.$invalid && add_customer_form.first_name.$dirty}" class="form-control" name="first_name" placeholder="First Name" required>
+                <div class="text-danger">
+                    <small ng-show="add_customer_form.first_name.$valid || add_customer_form.first_name.$pristine">&nbsp;</small>
+                    <small ng-show="add_customer_form.first_name.$error.required && add_customer_form.first_name.$dirty">First Name is required</small>
+                </div>
             </div>
             <div class="form-group">
-                <input type="text" ng-model="customers.newCustomer.last_name" class="form-control" id="last_name" placeholder="Last Name">
+                <input type="text" ng-model="customers.newCustomer.last_name" ng-class="{'alert-warning': add_customer_form.last_name.$invalid && add_customer_form.last_name.$dirty}" class="form-control" name="last_name" placeholder="Last Name" required>
+                <div class="text-danger">
+                    <small ng-show="add_customer_form.last_name.$valid || add_customer_form.last_name.$pristine">&nbsp;</small>
+                    <small ng-show="add_customer_form.last_name.$error.required && add_customer_form.last_name.$dirty">Last Name is required</small>
+                </div>
             </div>
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Add New Customer</button>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Add New Customer</button>
+                <div class="text-danger">
+                    <small>&nbsp;</small>
+                </div>
+            </div>
         </form>
     </div>
 </div>
